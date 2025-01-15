@@ -50,7 +50,7 @@ func (s *server) GetList(ctx context.Context, _ *api.GetListRequest) (*api.GetLi
 
 func (s *server) CreateTask(ctx context.Context, req *api.CreateTaskRequest) (*api.CreateTaskResponse, error) {
 	query := "INSERT INTO task (title, text, created_at, updated_at) VALUES ($1, $2, $3, $4) RETURNING id"
-
+	//
 	row := s.db.QueryRow(ctx, query, req.Title, req.Text, req.CreatedAt, req.UpdatedAt)
 	var id int64
 
